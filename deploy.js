@@ -19,13 +19,16 @@ module.exports = async (client) => {
         }
     }
 
-    // commands
     const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
     try {
-        // make sure to replace GUILD ID HERE with the ID of your server
-        // you can find this by turning on developer mode in your settings, right clicking the server icon, and clicking "Copy ID"
-        await rest.put(Routes.applicationGuildCommands(client.user.id, process.env.GUILD_ID), { body: commands });
-        console.log(`Successfully registered ${commands.length} commands!`);
+        // delete all global commands
+        //await rest.put(Routes.applicationCommands(client.user.id, process.env.GUILD_ID), { body: [] });
+        
+        if (process.env.GUILD_ID) {
+            await rest.put(Routes.applicationGuildCommands(client.user.id, process.env.GUILD_ID), { body: commands });
+        } else {
+           
+        } 
     } catch (error) {
         console.error(error);
     }
