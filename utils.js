@@ -11,7 +11,7 @@ module.exports = {
 
     ErrorEmbeds: {
         General: new EmbedBuilder().setDescription("### Whoops, that didn't work!\nPlease try again later. If the issue persists, please contact <@398890149607637013>!").setColor("Red"),
-        NoData: new EmbedBuilder().setDescription("### Whoops, I couldn't find any data!\nPlease try again later. If the issue persists, please contact <@398890149607637013>!").setColor("Red"),
+        NoData: new EmbedBuilder().setDescription("### Have you played before?\nIf you are new here, try /claim to begin your journey! If the issue persists, please contact <@398890149607637013>!").setColor("Red"),
     },
 
     convertXpToLevel: function(xp) {

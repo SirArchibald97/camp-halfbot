@@ -1,8 +1,9 @@
 module.exports.Weapons = {
-    Sword: {
-        id: "sword",
-        name: "Sword",
-        description: "",
+    BronzeSword: {
+        id: "bronze_sword",
+        name: "Celestial Bronze Sword",
+        description: "A sword forged of Celestial Bronze.",
+        damage: 10,
     },
 }
 

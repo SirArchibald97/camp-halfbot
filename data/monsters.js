@@ -6,14 +6,10 @@ module.exports.MonsterType = {
 }
 
 module.exports.Monsters = {
+    // NORMAL (4)
     Basilisk: {
         id: "basilisk",
         name: "Basilisk",
-        type: module.exports.MonsterType.Normal,
-    },
-    Blemmyae: {
-        id: "blemmyae",
-        name: "Blemmyae",
         type: module.exports.MonsterType.Normal,
     },
     Centaur: {
@@ -21,19 +17,9 @@ module.exports.Monsters = {
         name: "Centaur",
         type: module.exports.MonsterType.Normal,
     },
-    Cyclops: {
-        id: "cyclops",
-        name: "Cyclops",
-        type: module.exports.MonsterType.Water,
-    },
-    Dracaenae: {
-        id: "dracaenae",
-        name: "Dracaenae",
-        type: module.exports.MonsterType.Normal,
-    },
-    Drakon: {
-        id: "drakon",
-        name: "Drakon",
+    Blemmyae: {
+        id: "blemmyae",
+        name: "Blemmyae",
         type: module.exports.MonsterType.Normal,
     },
     Empousa: {
@@ -41,46 +27,78 @@ module.exports.Monsters = {
         name: "Empousa",
         type: module.exports.MonsterType.Normal,
     },
-    Eidolon: {
-        id: "eidolon",
-        name: "Eidolon",
+
+    // WATER (4)
+    Hydra: {
+        id: "hydra",
+        name: "Hydra",
+        type: module.exports.MonsterType.Water,
+    },
+    Siren: {
+        id: "siren",
+        name: "Siren",
+        type: module.exports.MonsterType.Water,
+    },
+    Telekhines: {
+        id: "telekhines",
+        name: "Telekhines",
+        type: module.exports.MonsterType.Water,
+    },
+    Cyclops: {
+        id: "cyclops",
+        name: "Cyclops",
         type: module.exports.MonsterType.Normal,
+    },
+
+    // FLYING (5)
+    Harpy: {
+        id: "harpy",
+        name: "Harpy",
+        type: module.exports.MonsterType.Flying,
+    },
+    StymphalianBird: {
+        id: "stymphalian_bird",
+        name: "Stymphalian Bird",
+        type: module.exports.MonsterType.Flying,
+    },
+    Griffon: {
+        id: "griffon",
+        name: "Griffon",
+        type: module.exports.MonsterType.Flying,
+    },
+    Eagle: {
+        id: "eagles",
+        name: "Eagle",
+        type: module.exports.MonsterType.Flying,
+    },
+    Dragon: {
+        id: "dragon",
+        name: "Dragon",
+        type: module.exports.MonsterType.Flying,
+    },
+    
+    // UNDERWORLD (4)
+    SkeletonSoldier: {
+        id: "skeleton_soldier",
+        name: "Skeleton Soldier",
+        type: module.exports.MonsterType.Underworld,
     },
     Hellhound: {
         id: "hellhound",
         name: "Hellhound",
         type: module.exports.MonsterType.Underworld,
     },
-    Hydra: {
-        id: "hydra",
-        name: "Hydra",
-        type: module.exports.MonsterType.Water,
-    },
-    Karpoi: {
-        id: "karpoi",
-        name: "Karpoi",
-        type: module.exports.MonsterType.Normal,
-    },
-    Laistrygonian: {
-        id: "laistrygonian",
-        name: "Laistrygonian",
-        type: module.exports.MonsterType.Normal,
-    },
-    Myrmeke: {
-        id: "myrmeke",
-        name: "Myrmeke",
-        type: module.exports.MonsterType.Normal,
-    },
-    Skeleton: {
-        id: "skeleton",
-        name: "Skeleton",
+    Fury: {
+        id: "fury",
+        name: "Fury",
         type: module.exports.MonsterType.Underworld,
     },
-    Ventus: {
-        id: "ventus",
-        name: "Ventus",
-        type: module.exports.MonsterType.Flying,
-    }
+    Eidolon: {
+        id: "eidolon",
+        name: "Eidolon",
+        type: module.exports.MonsterType.Underworld,
+    },
+
 }
 
 module.exports.getMonster = function(id) {

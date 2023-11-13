@@ -4,6 +4,8 @@ const { convertXpToLevel, convertLevelToStat, formatNumber, ErrorEmbeds } = requ
 const { Gods } = require("../data/gods");
 const { getArtefact } = require("../data/artefacts");
 const { getItem } = require("../data/items");
+const { getWeapon } = require("../data/weapons");
+const { getArmour } = require("../data/armour");
 
 module.exports = {
     data: new SlashCommandBuilder().setName("profile").setDescription("View your demigod profile!"),
@@ -39,28 +41,29 @@ module.exports = {
                     )
             },
             equipmentEmbed: function(interaction, player) {
+                const weapon = getWeapon(player.equipment.active.weapon)
+                const artefact = getArtefact(player.equipment.active.artefact);
+                const helmet = getArmour(player.equipment.active.helmet);
+                const chestplate = getArmour(player.equipment.active.chestplate);
+                const boots = getArmour(player.equipment.active.boots);
+
                 return new EmbedBuilder()
                     .setTitle(`${interaction.user.globalName}'s Active Equipment`)
-                    .setFields(
-                        { name: "Weapon", value: `**${player.equipment.active.weapon.type}**\n> ${}\n> ${player.equipment.active.weapon.damage} Damage` },
-                        { name: "Armour", value: `**${player.equipment.active.armour[0]}** > ` },
-                        { name: "Artefact", value: `` },
-                    )
-                    /*
                     .setDescription(
-                        `\`\`\`ansi\n` +
-                        `[1;37m${player.equipment.active.weapon.type} [0m> ${player.equipment.active.weapon.damage} Damage\n` +
-                        `[1;37m${getArtefact(player.equipment.active.artefact).name}\n` +
-                        `\`\`\``
+                        `Weapon: ${weapon ? `**${weapon.name}**\n> ${weapon.description}\n> \`${weapon.damage}\` Damage`: "**None**\n> You have no weapon equipped!"}\n\n` +
+                        `Helmet: ${helmet ? `**${helmet.name}**\n> ${helmet.description}\n> - \`${helmet.defence}\` Defence\n` : "**None**\n> You have no helmet equipped!"}` +
+                        `Chestplate: ${chestplate ? `**${chestplate.name}**\n> ${chestplate.description}\n> - \`${chestplate.defence}\` Defence` : "**None**\n> You have no chestplate equipped!"}\n` +
+                        `Boots: ${boots ? `**${boots.name}**\n> ${boots.description}\n> - \`${boots.defence}\` Defence)` : "**None**\n> You have no boots equipped!"}\n\n` +
+                        `Artefact: ${artefact ? `**${artefact.name}**\n> ${artefact.description}` : "**None**\n> You have no artefact equipped!"}`
                     )
-                    */
+                    .setThumbnail(interaction.user.avatarURL())
                     .setColor(Gods[player.parent].colour)
                     .setTimestamp()
             },
             inventoryEmbed: function(interaction, player) {
                 return new EmbedBuilder()
                     .setTitle(`${interaction.user.globalName}'s Items`)
-                    .setDescription("```ansi\n" + player.items.map(i => `[1;37m${getItem(i.item_id).name} [0m(x${i.amount})\n[0m${getItem(i.item_id).desc}\n`).join("\n") + "\n```")
+                    .setDescription(player.items.map(i => `**${getItem(i.item_id).name}** *(x${i.amount})*\n> ${getItem(i.item_id).desc}`).join("\n"))
                     .setColor(Gods[player.parent].colour)
                     .setTimestamp()
             },
